@@ -36,7 +36,7 @@ class PelisPopulares extends Component {
       if (error) {
         return <div>Error: {error.message}</div>;
       } else if (!isLoaded) {
-        return <div>Cargando...</div>;
+        return <div><img src="/XOsX.gf" alt="Cargando..."/></div>;
       } else {
         return (
           <section className="card-container">

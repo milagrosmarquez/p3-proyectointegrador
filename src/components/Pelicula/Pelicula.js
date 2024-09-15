@@ -42,7 +42,7 @@ class Pelicula extends Component {
           {showDescription && <p>{pelicula.overview}</p>}
 
           <button onClick={this.handleShowDescription}>
-            {showDescription ? 'Ocultar Descripcion' : 'Ver descripcion'}
+            {showDescription ? 'Ocultar' : 'Ver descripcion'}
           </button>
 
           
