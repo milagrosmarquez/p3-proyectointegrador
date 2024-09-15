@@ -3,7 +3,7 @@
 const Favoritos = () => {
     return (
         <>
-            <h1>My App in React</h1>
+            <h1>Mis favoritos💕</h1>
         </>
     )
 }
