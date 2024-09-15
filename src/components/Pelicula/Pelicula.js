@@ -6,6 +6,7 @@ class Pelicula extends Component {
     super(props);
     this.state = {
       showExtra: false,
+      favoritos: [],
     };
   }
 
@@ -15,14 +16,23 @@ class Pelicula extends Component {
     }));
   };
 
+  
+  manejarFavoritos = (pelicula) => {
+    this.setState(prevState => {
+      
+    });
+  };
+  
+
   render() {
     const { pelicula } = this.props;
     const { showDescription } = this.state;
 
-    return (  
-    <div className="Pelicula">
-      <li key={pelicula.id}>
-      
+    return (
+
+      <div className="Pelicula">
+        <li key={pelicula.id}>
+
           <h3>{pelicula.title}</h3>
           <img
             src={`https://image.tmdb.org/t/p/w500/${pelicula.poster_path}`}
@@ -30,11 +40,18 @@ class Pelicula extends Component {
           />
           <p>{pelicula.release_date}</p>
           {showDescription && <p>{pelicula.overview}</p>}
-        
-        <button onClick={this.handleShowDescription}>
-          {showDescription ? 'Ocultar Descripcion' : 'Ver descripcion'}
-        </button>
-      </li></div>
+
+          <button onClick={this.handleShowDescription}>
+            {showDescription ? 'Ocultar Descripcion' : 'Ver descripcion'}
+          </button>
+
+          
+            <button onClick={this.manejarFavoritos}>
+            {/* esFavorito ? '❤️' : '🤍' */}
+          </button> 
+
+
+        </li></div>
     );
   }
 }

@@ -6,15 +6,17 @@ import { Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import NotFound from "./pages/Notfound";
 import Favoritos from "./pages/Favoritos";
+import Detalle from "./pages/Detalle"
 
 function App() {
   return (
     <>
       <Header />
       <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/favoritos" component={Favoritos} />
+        <Route path="/" exact component= {Home} />
+        <Route path="/favoritos" component= {Favoritos} />
         <Route path="" component={NotFound} />
+        <Route path="/pelicula/id/:id" component= {Detalle} />
       </Switch>
      <Footer/>
     </>
