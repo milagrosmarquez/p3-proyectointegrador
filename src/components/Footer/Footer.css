@@ -1,0 +1,15 @@
+.Footer {
+    background-color: #ffa7c5; 
+    padding: 20px 0;
+    text-align: center;
+    border: 3px solid #d43268; 
+    border-radius: 20px;
+}
+
+.Footer p {
+    color:  #791133; 
+    font-size: 18px;
+    font-family: 'Cursive', sans-serif; 
+    margin: 0;
+    font-weight: bold;
+}
