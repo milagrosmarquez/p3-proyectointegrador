@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Pelicula from "../Pelicula/Pelicula"
 import "./PelisPopulares.css"
+import Loader from "../Loader/Loader"
 
 class PelisPopulares extends Component {
     constructor() {
@@ -36,7 +37,7 @@ class PelisPopulares extends Component {
       if (error) {
         return <div>Error: {error.message}</div>;
       } else if (!isLoaded) {
-        return <div><img src="/XOsX.gf" alt="Cargando..."/></div>;
+        return <Loader/> ;
       } else {
         return (
           <section className="card-container">

@@ -16,6 +16,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    
 }
 
 .Navbar li {
@@ -39,7 +40,8 @@
 }
 
 .logo {
-    width: 150px;
-    height: 150px;
-  
+    width: 50px;
+    height: 50px;
+    margin: 0px;
+    padding: 0px;
  }
