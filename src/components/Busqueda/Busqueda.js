@@ -6,7 +6,7 @@ class Busqueda extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            valor: ""
+            query: ""
         };
     }
 
@@ -19,15 +19,17 @@ class Busqueda extends Component {
         this.setState({ valor: evento.target.value });
     }
 
+
     render() {
         return (
             <div className="Busqueda">
                 <form onSubmit={(evento) => this.evitarSubmit(evento)}>
                     <input
                         type="text"
+                        name="query"
                         placeholder="Buscar Película <3"
                         onChange={(evento) => this.controlarCambios(evento)}
-                        value={this.state.valor}
+                        value={this.state.query}
                     />
                     <input type="submit" value="Buscar" />
                 </form>

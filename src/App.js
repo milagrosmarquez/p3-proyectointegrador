@@ -4,10 +4,12 @@ import './App.css';
 import { Switch, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
+import Populares from "./pages/Populares";
+import Cartelera from "./pages/Cartelera";
 import NotFound from "./pages/Notfound";
 import Favoritos from "./pages/Favoritos";
 import Detalle from "./pages/Detalle"
-import Busqueda from "./pages/Busqueda"
+import SearchResults from "./pages/SearchResults"
 
 function App() {
   return (
@@ -18,7 +20,9 @@ function App() {
         <Route path="/favoritos" component= {Favoritos} />
         <Route path="" component={NotFound} />
         <Route path="/pelicula/id/:id" component= {Detalle} />
-        <Route path="/busqueda" component={Busqueda} />
+        <Route path="/search" component={SearchResults} />
+        <Route path="/cartelera" component= {Cartelera} />
+        <Route path="/populares" component={Populares} />
       </Switch>
      <Footer/>
     </>
