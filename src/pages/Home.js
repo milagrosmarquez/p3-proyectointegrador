@@ -16,7 +16,6 @@ const Home = (props) => {
             <PelisCartelera/>
             <h2>Populares</h2>
             <PelisPopulares/>
-            <Loader/>
         </>
     )
 }

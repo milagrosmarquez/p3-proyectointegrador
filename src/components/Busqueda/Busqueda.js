@@ -12,13 +12,12 @@ class Busqueda extends Component {
 
     evitarSubmit(evento) {
         evento.preventDefault();
-        console.log("Buscando:", this.state.valor); 
+        console.log("Buscando:", this.state.query);
     }
 
     controlarCambios(evento) {
-        this.setState({ valor: evento.target.value });
+        this.setState({ query: evento.target.value });
     }
-
 
     render() {
         return (
