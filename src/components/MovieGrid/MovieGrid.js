@@ -34,10 +34,7 @@ class MovieGrid extends Component {
                   idx < 5 ? (
                     <Pelicula
                       key={movie.id}
-                      title={movie.original_title}
-                      desc={movie.overview}
-                      img={movie.backdrop_path}
-                      id={movie.id}
+                      pelicula={movie}
                     />
                   ) : null
                 )
