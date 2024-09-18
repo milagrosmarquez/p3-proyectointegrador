@@ -13,7 +13,7 @@ const Home = (props) => {
     return (
         <>
             <h1>Metflix</h1>
-            <Busqueda history= {this.props.history} />
+            <Busqueda history= {props.history} />
             <h2>Cartelera⭐</h2>
             <MovieGrid url='https://api.themoviedb.org/3/movie/now_playing?api_key=ac8eace47b1cb77be341847000943da0'/>
             <h2>Populares</h2>
