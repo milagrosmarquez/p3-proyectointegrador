@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import "./Pelicula.css"
+import { Link } from 'react-router-dom';
 
 class Pelicula extends Component {
   constructor(props) {
@@ -85,6 +86,11 @@ class Pelicula extends Component {
           <button onClick={this.manejarFavoritos}>
             {esFavorito ? 'Sacar de favoritos 🤍' : 'Agregar a favoritos ❤️'}
           </button>
+
+          <Link to={`/detalle/${pelicula.id}`}>
+            <button>Ver detalle</button>
+          </Link>
+
         </li>
       </div>
     );

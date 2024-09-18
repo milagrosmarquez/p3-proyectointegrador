@@ -3,45 +3,45 @@ import Pelicula from "../Pelicula/Pelicula"
 import Loader from "../Loader/Loader"
 
 class MovieGrid extends Component {
-        constructor(props) {
-          super(props);
-          this.state = {
+    constructor(props) {
+        super(props);
+        this.state = {
             movies: [],
-          };
-        }
-      
-        componentDidMount() {
-          fetch(this.props.url)
+        };
+    }
+
+    componentDidMount() {
+        fetch(this.props.url)
             .then((response) => response.json())
             .then((data) => {
-              this.setState({
-                movies: data.results,
-              });
-              console.log(data);
+                this.setState({
+                    movies: data.results,
+                });
+                console.log(data);
             })
             .catch((error) => console.log(error));
-        }
-      
-        render() {
-          const { movies } = this.state;
-      
-          return (
+    }
+
+    render() {
+        const { movies } = this.state;
+
+        return (
             <div className="movie-grid">
-              {movies.length === 0 ? (
-                <Loader />
-              ) : (
-                movies.map((movie, idx) =>
-                  idx < 5 ? (
-                    <Pelicula
-                      key={movie.id}
-                      pelicula={movie}
-                    />
-                  ) : null
-                )
-              )}
+                {movies.length === 0 ? (
+                    <Loader />
+                ) : (
+                    movies.map((movie, idx) =>
+                        idx < 5 ? (
+                            <Pelicula
+                                key={movie.id}
+                                pelicula={movie}
+                            />
+                        ) : null
+                    )
+                )}
             </div>
-          );
-        }
-      }
-      
-      export default MovieGrid;
+        );
+    }
+}
+
+export default MovieGrid;
