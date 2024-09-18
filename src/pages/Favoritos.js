@@ -22,7 +22,7 @@ class Favoritos extends Component {
 
             Promise.all(
                 parsedArray.map((id) => {
-                    return fetch(URL)
+                    return fetch(`https://api.themoviedb.org/3/find/${id}`)
                         .then((response) => response.json())
                         .then((movie) => {
                             this.setState((prevState) => ({
