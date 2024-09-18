@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import "./MovieGrid.css"
 import Pelicula from "../Pelicula/Pelicula"
 import Loader from "../Loader/Loader"
 
@@ -26,7 +27,7 @@ class MovieGrid extends Component {
         const { movies } = this.state;
 
         return (
-            <div className="movie-grid">
+            <section className="card-container">
                 {movies.length === 0 ? (
                     <Loader />
                 ) : (
@@ -39,7 +40,7 @@ class MovieGrid extends Component {
                         ) : null
                     )
                 )}
-            </div>
+            </section>
         );
     }
 }
