@@ -1,13 +1,6 @@
 import Busqueda from "../components/Busqueda/Busqueda"
-import PelisCartelera from "../components/PelisCartelera/PelisCartelera"
-import PelisPopulares from "../components/PelisPopulares/PelisPopulares"
-
-
 import "../index.css"
 import MovieGrid from "../components/MovieGrid/MovieGrid"
-
-
-
 
 const Home = (props) => {
     return (
