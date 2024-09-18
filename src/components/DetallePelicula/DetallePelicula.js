@@ -53,7 +53,7 @@ class DetallePelicula extends Component {
             {pelicula.genres.map(genre => (
               <li key={genre.id}>{genre.name}</li>))}
           </ul>
-          <p>Sinópsis{pelicula.overview}</p>
+          <p>{pelicula.overview}</p>
 
         </div>
       );
