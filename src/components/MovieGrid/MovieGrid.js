@@ -2,6 +2,7 @@ import { Component } from 'react';
 import "./MovieGrid.css"
 import Pelicula from "../Pelicula/Pelicula"
 import Loader from "../Loader/Loader"
+import { Link } from 'react-router-dom'; 
 
 class MovieGrid extends Component {
     constructor(props) {
@@ -25,6 +26,7 @@ class MovieGrid extends Component {
 
     render() {
         const { movies } = this.state;
+        const { verTodasLink } = this.props;
 
         return (
             <section className="card-container">
@@ -40,6 +42,11 @@ class MovieGrid extends Component {
                         ) : null
                     )
                 )}
+
+            <Link to={verTodasLink}>
+              <button className="verTodas">Ver todas</button>
+            </Link>
+
             </section>
         );
     }
