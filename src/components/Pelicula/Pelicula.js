@@ -79,17 +79,23 @@ class Pelicula extends Component {
           <p>{pelicula.release_date}</p>
           {showDescription && <p>{pelicula.overview}</p>}
 
-          <button onClick={this.handleShowDescription}>
-            {showDescription ? 'Ocultar' : 'Ver descripción'}
-          </button>
-
-          <button onClick={this.manejarFavoritos}>
-            {esFavorito ? 'Sacar de favoritos 🤍' : 'Agregar a favoritos ❤️'}
-          </button>
-
-          <Link to={`/detalle/${pelicula.id}`}>
-            <button>Ver detalle</button>
-          </Link>
+          <ul>
+            <li>
+              <button onClick={this.handleShowDescription}>
+                {showDescription ? 'Ocultar' : 'Ver descripción'}
+              </button>
+            </li>
+            <li>
+              <button onClick={this.manejarFavoritos}>
+                {esFavorito ? 'Sacar de favoritos 🤍' : 'Agregar a favoritos ❤️'}
+              </button>
+            </li>
+            <li>
+              <Link to={`/detalle/${pelicula.id}`}>
+                <button>Ver detalle</button>
+              </Link>
+            </li>
+          </ul>
 
         </li>
       </div>
