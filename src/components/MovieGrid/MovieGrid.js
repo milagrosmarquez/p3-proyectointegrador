@@ -2,7 +2,7 @@ import { Component } from 'react';
 import "./MovieGrid.css"
 import Pelicula from "../Pelicula/Pelicula"
 import Loader from "../Loader/Loader"
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 
 class MovieGrid extends Component {
     constructor(props) {
@@ -26,7 +26,7 @@ class MovieGrid extends Component {
 
     render() {
         const { movies } = this.state;
-        const { verTodasLink } = this.props;
+        const { verTodasLink, mostrarTodas } = this.props;
 
         return (
             <section className="card-container">
@@ -34,7 +34,12 @@ class MovieGrid extends Component {
                     <Loader />
                 ) : (
                     movies.map((movie, idx) =>
-                        idx < 5 ? (
+                        mostrarTodas ? (
+                            <Pelicula
+                                key={movie.id}
+                                pelicula={movie}
+                            />
+                        ) : idx < 5 ? (
                             <Pelicula
                                 key={movie.id}
                                 pelicula={movie}
@@ -43,9 +48,11 @@ class MovieGrid extends Component {
                     )
                 )}
 
-            <Link to={verTodasLink}>
-              <button className="verTodas">Ver todas</button>
-            </Link>
+                {mostrarTodas === false ? (
+                    <Link to={verTodasLink}>
+                        <button className="verTodas">Ver todas</button>
+                    </Link>
+                ) : null}
 
             </section>
         );
