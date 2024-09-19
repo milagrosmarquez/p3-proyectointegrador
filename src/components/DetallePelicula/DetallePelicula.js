@@ -9,19 +9,30 @@ class DetallePelicula extends Component {
       error: null,
       pelicula: {},
       isLoaded: false,
+      esFavorito: false,
     };
   }
 
   componentDidMount() {
-    const { id } = this.props;
-    let url = `https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=ac8eace47b1cb77be341847000943da0`;
-    fetch(url)
+    const{id} = this.props;
+   
+    fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=ac8eace47b1cb77be341847000943da0`)
       .then((response) => response.json())
       .then((data) => {
         this.setState({
           isLoaded: true,
           pelicula: data,
         });
+
+
+        const storage = localStorage.getItem("favoritos");
+        if (storage !== null) {
+          const parsedArray = JSON.parse(storage);
+          const estaEnFavoritos = parsedArray.includes(data.id);
+          this.setState({
+            esFavorito: estaEnFavoritos
+          });
+        }
       })
       .catch((error) => {
         this.setState({
@@ -29,10 +40,49 @@ class DetallePelicula extends Component {
           error,
         });
       });
-  }
+}
+
+
+  manejarFavoritos = () => {
+    if (this.state.esFavorito) {
+      this.sacarFavorito();
+    } else {
+      this.agregarFavorito();
+    }
+  };
+
+  
+  agregarFavorito = () => {
+    const storage = localStorage.getItem("favoritos");
+    if (storage !== null) {
+      const parsedArray = JSON.parse(storage);
+      parsedArray.push(this.state.pelicula.id);
+      const stringArray = JSON.stringify(parsedArray);
+      localStorage.setItem("favoritos", stringArray);
+    } else {
+      const primerMovie = [this.state.pelicula.id];
+      const stringArray = JSON.stringify(primerMovie);
+      localStorage.setItem("favoritos", stringArray);
+    }
+    this.setState({
+      esFavorito: true
+    });
+  };
+
+  sacarFavorito = () => {
+    const storage = localStorage.getItem("favoritos");
+    const parsedArray = JSON.parse(storage);
+    const favoritosRestantes = parsedArray.filter(id => id !== this.state.pelicula.id);
+    const stringArray = JSON.stringify(favoritosRestantes);
+    localStorage.setItem("favoritos", stringArray);
+    this.setState({
+      esFavorito: false
+    });
+  };
 
   render() {
     const { error, isLoaded, pelicula } = this.state;
+    const { esFavorito } = this.state;
 
     if (error) {
       return <div>Error: {error.message}</div>;
@@ -54,6 +104,11 @@ class DetallePelicula extends Component {
               <li key={genre.id}>{genre.name}</li>))}
           </ul>
           <p>{pelicula.overview}</p>
+
+        
+              <button onClick={this.manejarFavoritos}>
+                {esFavorito ? 'Sacar de favoritos 🤍' : '❤️'}
+              </button>
 
         </div>
       );

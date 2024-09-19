@@ -13,15 +13,18 @@ class MovieGrid extends Component {
     }
 
     componentDidMount() {
-        fetch(this.props.url)
-            .then((response) => response.json())
-            .then((data) => {
-                this.setState({
-                    movies: data.results,
-                });
-                console.log(data);
-            })
-            .catch((error) => console.log(error));
+        (this.props.movies && this.props.movies.length > 0)? 
+        this.setState({
+                movies: this.props.movies,})
+            : 
+            fetch(this.props.url)
+                .then((response) => response.json())
+                .then((data) => {
+                    this.setState({
+                        movies: data.results,
+                    });
+                })
+                .catch((error) => console.log(error));
     }
 
     render() {

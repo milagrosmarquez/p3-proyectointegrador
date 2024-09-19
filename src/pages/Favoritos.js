@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Loader from "../components/Loader/Loader";
+import MovieGrid from "../components/MovieGrid/MovieGrid";
 
 class Favoritos extends Component {
 
@@ -43,13 +44,22 @@ class Favoritos extends Component {
     }
 
     render() {
+
         return (
             <>
                 <h1>Mis favoritos 💕</h1>
                 <div>
-                    {this.state.isLoading ?
-                       <Loader/> : "grilla"}
-                </div>
+                {this.state.isLoading ? (
+                    <Loader />
+                ) : this.state.movies.length === 0 ? (
+                    <p>No tienes películas favoritas</p>
+                ) : (
+                    <MovieGrid
+                        movies={this.state.movies}
+                        verTodas={false}
+                    />
+                )}
+            </div>
             </>
         );
     }

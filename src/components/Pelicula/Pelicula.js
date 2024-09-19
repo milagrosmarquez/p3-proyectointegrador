@@ -22,6 +22,14 @@ class Pelicula extends Component {
     }
   }
 
+  manejarFavoritos = () => {
+    if (this.state.esFavorito) {
+      this.sacarFavorito();
+    } else {
+      this.agregarFavorito();
+    }
+  };
+
   agregarFavorito = () => {
     const storage = localStorage.getItem("favoritos");
     if (storage !== null) {
@@ -48,14 +56,6 @@ class Pelicula extends Component {
     this.setState({
       esFavorito: false
     });
-  };
-
-  manejarFavoritos = () => {
-    if (this.state.esFavorito) {
-      this.sacarFavorito();
-    } else {
-      this.agregarFavorito();
-    }
   };
 
   handleShowDescription = () => {
