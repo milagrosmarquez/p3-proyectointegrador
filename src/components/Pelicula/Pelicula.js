@@ -87,7 +87,7 @@ class Pelicula extends Component {
             </li>
             <li>
               <button onClick={this.manejarFavoritos}>
-                {esFavorito ? 'Sacar de favoritos 🤍' : 'Agregar a favoritos ❤️'}
+                {esFavorito ? 'Sacar de favoritos 🤍' : '❤️'}
               </button>
             </li>
             <li>
