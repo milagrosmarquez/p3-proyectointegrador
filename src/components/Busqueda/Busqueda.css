@@ -2,3 +2,9 @@
     width: 100%;
     padding-left: 30px;
 }
+
+.Busqueda input{
+    border: 2px solid #ccc; /* Borde del input */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 8px 30px; /* Espaciado interno más grande */
+}
