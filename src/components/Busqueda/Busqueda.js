@@ -33,7 +33,7 @@ class Busqueda extends Component {
                         value={this.state.query}
                     />
                      <Link to={`/Resultados/${this.state.query}`}>
-                    <button type="button">Buscar</button>
+                    <button type="button">🔎</button>
                     </Link>
                 </form>
             </div>
