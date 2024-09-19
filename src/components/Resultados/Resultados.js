@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Pelicula from "../Pelicula/Pelicula"
 import Loader from "../Loader/Loader";
+import "./Resultados.css"
 
 class Resultados extends Component {
   constructor(props) {
