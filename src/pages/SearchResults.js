@@ -1,14 +1,22 @@
-import {Component} from "react"
+import { Component } from "react";
+import Resultados from "../components/Resultados/Resultados";
 
-export class SearchResults extends Component {
-    constructor(props){
-        super(props)
-    }
+class SearchResults extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-    render(){
-        return (
-            <div>  {this.props.location.state.query}</div>
-        )
-    }
+  render() {
+  
+    const query = this.props.match.params.query;
+    
+    return (
+      <div>
+        <h2>Resultados de búsqueda</h2>  
+        <Resultados query={query} />
+      </div>
+    );
+  }
 }
-export default SearchResults
+
+export default SearchResults;

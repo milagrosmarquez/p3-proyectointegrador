@@ -19,7 +19,7 @@ function App() {
         <Route path="/" exact component= {Home} />
         <Route path="/favoritos" exact component= {Favoritos} />
         <Route path="/detalle/:id" exact component= {Detalle} />
-        <Route path="/search" exact component={SearchResults} />
+        <Route path="/resultados/:query" exact component={SearchResults} />
         <Route path="/cartelera" exact component= {Cartelera} />
         <Route path="/populares" exact component={Populares} />
         <Route path="" component={NotFound} />

@@ -1,5 +1,7 @@
 import { Component } from "react";
 import "./Busqueda.css"
+import { Link } from 'react-router-dom';
+
 
 class Busqueda extends Component {
 
@@ -30,7 +32,9 @@ class Busqueda extends Component {
                         onChange={(evento) => this.controlarCambios(evento)}
                         value={this.state.query}
                     />
-                    <input type="submit" value="Buscar" />
+                     <Link to={`/Resultados/${this.state.query}`}>
+                    <button type="button">Buscar</button>
+                    </Link>
                 </form>
             </div>
         );
