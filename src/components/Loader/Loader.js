@@ -4,7 +4,7 @@ const Loader = () => {
 
     return(
        <div className="Loader">
-        <img src="./img/XOsX.gf" alt="Cargando..." />
+        <img src="../img/GIF.gif" alt="Cargando..." />
        </div>
     );
 }
