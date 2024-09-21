@@ -70,6 +70,7 @@ class Pelicula extends Component {
 
     return (
       <div className="Pelicula">
+        <ul>
         <li key={pelicula.id}>
           <h3>{pelicula.title}</h3>
           <img
@@ -98,6 +99,7 @@ class Pelicula extends Component {
           </ul>
 
         </li>
+        </ul>
       </div>
     );
   }
