@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background:  url("../public/img/fondo.jpg");
 }
 
 code {
@@ -16,7 +17,7 @@ code {
 
 h1 {
   font-family: 'Roboto', sans-serif;
-  color: #ff83ac; 
+  color: #000000; 
   margin: 10px;
   padding-left: 18px;
 }
