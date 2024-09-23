@@ -83,17 +83,17 @@ class Pelicula extends Component {
           <ul>
             <li>
               <button onClick={this.handleShowDescription}>
-                {showDescription ? 'Ocultar' : 'Ver descripción'}
+                {showDescription ? 'Ocultar' : 'Descripción'}
               </button>
             </li>
             <li>
               <button onClick={this.manejarFavoritos}>
-                {esFavorito ? 'Sacar de favoritos 🤍' : '❤️'}
+                {esFavorito ? '❤️' : '🤍'}
               </button>
             </li>
             <li>
               <Link to={`/detalle/${pelicula.id}`}>
-                <button>Ver detalle</button>
+                <button>Detalle</button>
               </Link>
             </li>
           </ul>

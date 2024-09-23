@@ -63,8 +63,8 @@ class MovieGrid extends Component {
 
         return (
         
-        <section className="card-container">
-
+        <div className="caja">
+            <section className="filtro">
                 {filtrado == true ? (
                     <form onSubmit={(evento) => this.evitarSubmit(evento)}>
                         <input
@@ -78,8 +78,9 @@ class MovieGrid extends Component {
                     </form>
 
                 ) : null}
-
-
+            
+            </section>
+            <section className="card-container">
                 {cargando ? (
                     <Loader />
                 ) : (
@@ -117,6 +118,7 @@ class MovieGrid extends Component {
                 ) : null}
 
             </section>
+            </div>
         );
     }
 }

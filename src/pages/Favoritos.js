@@ -47,7 +47,7 @@ class Favoritos extends Component {
 
         return (
             <>
-                <h1>Mis favoritos 💕</h1>
+                <h1>Mis favoritos 💗</h1>
                 <div>
                 {this.state.isLoading ? (
                     <Loader />
