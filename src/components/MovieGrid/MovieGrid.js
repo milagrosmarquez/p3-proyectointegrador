@@ -12,7 +12,9 @@ class MovieGrid extends Component {
             moviesFiltradas: [],
             filterValue: "",
             filtroAplicado: false,
-            cargando: true
+            cargando: true,
+            cargarMasPeliculas: false,
+            page: 1
         };
     }
 
@@ -21,16 +23,17 @@ class MovieGrid extends Component {
             this.setState({
                 movies: this.props.movies,
                 moviesFiltradas: this.props.movies,
-                cargando: false
+                cargando: false,
             })
             :
-            fetch(this.props.url)
+            fetch(`${this.props.url}&page=${this.state.page}`)
                 .then((response) => response.json())
                 .then((data) => {
                     this.setState({
                         movies: data.results,
                         moviesFiltradas: data.results,
-                        cargando: false
+                        cargando: false,
+                        page: this.state.page + 1
                     });
                 })
                 .catch((error) => console.log(error),
@@ -54,18 +57,33 @@ class MovieGrid extends Component {
             movie.title.toLowerCase().includes(filterValue.toLowerCase())
         );
         this.setState({ moviesFiltradas, filtroAplicado: true });
+    };
+
+    cargarMasPeliculas =() => {
+       fetch(`${this.props.url}&page=${this.state.page}`)
+       .then(response => response.json())
+       .then(data => {
+        this.setState(prevState => ({
+            movies: [...prevState.movies, ...data.results], 
+            moviesFiltradas: [...prevState.moviesFiltradas, ...data.results],  
+            page: prevState.page + 1 
+        }));
+    })
+    .catch(error => console.log(error));
+
     }
+       
 
 
     render() {
         const { movies, cargando, moviesFiltradas, filtroAplicado } = this.state;
-        const { verTodasLink, mostrarTodas, filtrado } = this.props;
+        const { verTodasLink, mostrarTodas, filtrado, cargarMas } = this.props;
 
         return (
         
         <div className="caja">
             <section className="filtro">
-                {filtrado == true ? (
+                {filtrado === true ? (
                     <form onSubmit={(evento) => this.evitarSubmit(evento)}>
                         <input
                             type="text"
@@ -116,6 +134,11 @@ class MovieGrid extends Component {
                         <button className="verTodas">Ver todas</button>
                     </Link>
                 ) : null}
+
+                {cargarMas === true && filtroAplicado === false ?(
+                      <button className="verTodas" onClick={this.cargarMasPeliculas}>Cargar más</button>
+                ): null}
+                
 
             </section>
             </div>
