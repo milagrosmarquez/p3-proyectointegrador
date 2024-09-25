@@ -13,7 +13,6 @@ class MovieGrid extends Component {
             filterValue: "",
             filtroAplicado: false,
             cargando: true,
-            cargarMasPeliculas: false,
             page: 1
         };
     }
