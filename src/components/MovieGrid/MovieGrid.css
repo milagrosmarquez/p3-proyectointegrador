@@ -22,7 +22,7 @@
 }
 
 
-.filtro ul{
+.filtro ul {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -32,40 +32,82 @@
   justify-content: center;
 }
 
-.filtro li{
+.filtro li {
   flex: 1 1 200px;
   max-width: 200px;
 }
 
 
-.filtro input{
-  border: 2px solid #000000; 
-  border-radius: 8px ;
+.filtro input {
+  border: 2px solid #000000;
+  border-radius: 8px;
   padding: 11px 30px;
   margin-left: 30px;
 }
 
 .filtro button {
   border: 2px solid#000000;
-  border-radius: 8px ;
+  border-radius: 8px;
 }
 
-.verTodas{
+.ver-todas {
   margin: 0 15px;
   margin-bottom: 40px;
   padding: 5px 25px;
   background: linear-gradient(rgb(250, 170, 170), rgb(255, 142, 167), rgb(255, 115, 157));
-  border: 3px solid #eb5184; 
+  border: 3px solid #eb5184;
   border-radius: 9px;
 }
 
-.card-container input{
-  border: 2px solid #000000; 
-  border-radius: 8px ;
+.card-container input {
+  border: 2px solid #000000;
+  border-radius: 8px;
   padding: 11px 30px;
 }
 
-.card-container button{
+.card-container button {
   border: 2px solid#000000;
-  border-radius: 8px ;
+  border-radius: 8px;
+}
+
+@media (max-width: 480px) {
+  .card-container ul,
+  .filtro ul {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .card-container li,
+  .filtro li {
+    max-width: 100%;
+    flex: none;
+  }
+
+  .filtro input {
+    width: 100%;
+    padding: 8px 15px;
+    margin-left: 0; 
+  }
+
+  .filtro button,
+  .ver-todas {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .ver-todas {
+    margin-bottom: 20px;
+  }
+
+  .card-container input {
+    width: 100%;
+    padding: 8px 15px;
+  }
+
+  .card-container button {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+  }
 }

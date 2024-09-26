@@ -42,8 +42,6 @@ class MovieGrid extends Component {
 
     evitarSubmit(evento) {
         evento.preventDefault();
-        console.log("Filtrando..");
-
     }
 
     handleFilterChange = (evento) => {
@@ -130,12 +128,12 @@ class MovieGrid extends Component {
 
                 {mostrarTodas === false ? (
                     <Link to={verTodasLink}>
-                        <button className="verTodas">Ver todas</button>
+                        <button className="ver-todas">Ver todas</button>
                     </Link>
                 ) : null}
 
                 {cargarMas === true && filtroAplicado === false ?(
-                      <button className="verTodas" onClick={this.cargarMasPeliculas}>Cargar más</button>
+                      <button className="ver-todas" onClick={this.cargarMasPeliculas}>Cargar más</button>
                 ): null}
                 
 

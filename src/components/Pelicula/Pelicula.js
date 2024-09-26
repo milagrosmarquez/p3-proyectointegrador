@@ -69,36 +69,36 @@ class Pelicula extends Component {
     const { showDescription, esFavorito } = this.state;
 
     return (
-      <div className="Pelicula">
+      <div className="pelicula">
         <ul>
-        <li key={pelicula.id}>
-          <h3>{pelicula.title}</h3>
-          <img
-            src={`https://image.tmdb.org/t/p/w500/${pelicula.poster_path}`}
-            alt={pelicula.title}
-          />
-          <p>{pelicula.release_date}</p>
-          {showDescription && <p>{pelicula.overview}</p>}
+          <li key={pelicula.id}>
+            <h3>{pelicula.title}</h3>
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${pelicula.poster_path}`}
+              alt={pelicula.title}
+            />
+            <p>{pelicula.release_date}</p>
+            {showDescription && <p>{pelicula.overview}</p>}
 
-          <ul>
-            <li>
-              <button onClick={this.handleShowDescription}>
-                {showDescription ? 'Ocultar' : 'Descripción'}
-              </button>
-            </li>
-            <li>
-              <button onClick={this.manejarFavoritos}>
-                {esFavorito ? '❤️' : '🤍'}
-              </button>
-            </li>
-            <li>
-              <Link to={`/detalle/${pelicula.id}`}>
-                <button>Detalle</button>
-              </Link>
-            </li>
-          </ul>
+            <ul>
+              <li>
+                <button onClick={this.handleShowDescription}>
+                  {showDescription ? 'Ocultar' : 'Descripción'}
+                </button>
+              </li>
+              <li>
+                <button onClick={this.manejarFavoritos}>
+                  {esFavorito ? '❤️' : '🤍'}
+                </button>
+              </li>
+              <li>
+                <Link to={`/detalle/${pelicula.id}`}>
+                  <button>Detalle</button>
+                </Link>
+              </li>
+            </ul>
 
-        </li>
+          </li>
         </ul>
       </div>
     );

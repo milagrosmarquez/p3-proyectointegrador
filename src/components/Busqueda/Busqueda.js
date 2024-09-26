@@ -14,7 +14,6 @@ class Busqueda extends Component {
 
     evitarSubmit(evento) {
         evento.preventDefault();
-        console.log("Buscando:", this.state.query);
     }
 
     controlarCambios(evento) {
@@ -23,12 +22,12 @@ class Busqueda extends Component {
 
     render() {
         return (
-            <div className="Busqueda">
+            <div className="busqueda">
                 <form onSubmit={(evento) => this.evitarSubmit(evento)}>
                     <input
                         type="text"
                         name="query"
-                        placeholder="Buscar Película <3"
+                        placeholder="Buscar Película <3 😎"
                         onChange={(evento) => this.controlarCambios(evento)}
                         value={this.state.query}
                     />

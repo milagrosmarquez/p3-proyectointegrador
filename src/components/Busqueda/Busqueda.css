@@ -1,16 +1,34 @@
-.Busqueda {
+.busqueda {
     width: 100%;
     padding-left: 30px;
 }
 
-.Busqueda input{
+.busqueda input{
     border: 2px solid #414040; 
     border-radius: 8px ;
     padding: 11px 30px;
     
 }
 
-.Busqueda button{
+.busqueda button{
     border: 2px solid#414040;
     border-radius: 8px ;
+}
+
+@media (max-width: 480px) {
+    .busqueda {
+        padding-left: 10px; 
+    }
+
+    .busqueda input {
+        width: 86%;
+        padding: 8px 15px; 
+        font-size: 14px; 
+    }
+
+    .busqueda button {
+        width: 95%;
+        padding: 8px; 
+        font-size: 14px; 
+    }
 }

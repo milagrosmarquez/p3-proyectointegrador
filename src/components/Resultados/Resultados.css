@@ -21,3 +21,46 @@
     max-width: 200px;
   }
   
+
+  @media (max-width: 480px) {
+    .card-container ul,
+    .filtro ul {
+      flex-direction: column;
+      gap: 8px;
+    }
+  
+    .card-container li,
+    .filtro li {
+      max-width: 100%;
+      flex: none;
+    }
+  
+    .filtro input {
+      width: 86%;
+      padding: 8px 15px;
+      margin-left: 10px; 
+    }
+  
+    .filtro button,
+    .ver-todas {
+      width: 95%;
+      padding: 8px;
+      margin-left: 10px; 
+      font-size: 14px;
+    }
+  
+    .ver-todas {
+      margin-bottom: 20px;
+    }
+  
+    .card-container input {
+      width: 100%;
+      padding: 8px 15px;
+    }
+  
+    .card-container button {
+      width: 100%;
+      padding: 8px;
+      font-size: 14px;
+    }
+  }

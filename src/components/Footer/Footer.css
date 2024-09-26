@@ -1,4 +1,4 @@
-.Footer {
+.footer {
     background-color: #ffa7c5; 
     padding: 20px 0;
     text-align: center;
@@ -6,7 +6,7 @@
     border-radius: 20px;
 }
 
-.Footer p {
+.footer p {
     color:  #791133; 
     font-size: 18px;
     font-family: 'Cursive', sans-serif; 

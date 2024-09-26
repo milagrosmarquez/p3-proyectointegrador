@@ -1,4 +1,4 @@
-.Navbar {
+.navbar {
     display: flex;
     justify-content: space-between;
     padding: 0 20px;
@@ -10,7 +10,7 @@
     border-radius: 20px;
 }
 
-.Navbar ul {
+.navbar ul {
     display: flex;
     align-items: center;
     margin: 0;
@@ -19,7 +19,7 @@
     
 }
 
-.Navbar li {
+.navbar li {
     margin: 0 15px;
     padding: 5px 25px;
     background: linear-gradient(rgb(250, 170, 170), rgb(255, 142, 167), rgb(255, 115, 157));
@@ -27,7 +27,7 @@
     border-radius: 9px;
 }
 
-.Navbar a {
+.navbar a {
     color: #000000; 
     text-decoration: none;
     font-size: 18px;
@@ -35,7 +35,7 @@
     font-family: 'Cursive', sans-serif; 
 }
 
-.Navbar a:hover {
+.navbar a:hover {
     color: #f3f175; 
 }
 
@@ -46,9 +46,29 @@
     padding: 0px;
  }
 
- h3{
-    font-weight: 400;
-    color: #000000;
- }
+ @media (max-width: 480px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 5px;
+    }
 
- 
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px; 
+    }
+
+    .navbar li {
+        padding: 8px 15px; 
+        margin: 5px 0;
+    }
+
+    .navbar a {
+        font-size: 14px; 
+    }
+
+    .logo {
+        width: 35px;
+        height: 35px;
+    }
+}
