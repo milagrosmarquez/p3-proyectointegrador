@@ -56,7 +56,18 @@
   padding: 5px 25px;
   background: linear-gradient(rgb(250, 170, 170), rgb(255, 142, 167), rgb(255, 115, 157));
   border: 3px solid #eb5184;
-  border-radius: 9px;
+  border-radius: 9px; 
+}
+
+.ver-todas:hover{
+  transform: scale(1.18); 
+  background: linear-gradient(
+
+  rgb(255, 184, 219), 
+  rgb(253, 202, 98), 
+  rgb(255, 255, 153) 
+  );
+  font-weight: bold; 
 }
 
 .card-container input {
@@ -99,6 +110,18 @@
   .ver-todas {
     margin-bottom: 20px;
   }
+
+  .ver-todas:hover{
+    transform: scale(1.18); 
+    background: linear-gradient(
+  
+    rgb(255, 184, 219), 
+    rgb(253, 202, 98), 
+    rgb(255, 255, 153) 
+    );
+    font-weight: bold; 
+  }
+  
 
   .card-container input {
     width: 100%;
