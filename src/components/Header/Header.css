@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     padding: 0 20px;
-    background-color: #fcc3e2; 
+    background: linear-gradient(135deg, #f0ff6b, #f7c1d1);
     color: #fff;
     height: 80px;
     align-items: center;
@@ -45,11 +45,19 @@
 }
 
 .logo {
-    width: 50px;
-    height: 50px;
-    margin: 0px;
+    width: 70px;
+    height: 70px;
+    margin-left: 10px;
     padding: 0px;
+    border-radius: 50%; 
+    object-fit: cover;
+
  }
+
+ .logo:hover {
+    transform: scale(1.1) rotate(360deg); 
+    transition: all 0.5s ease; 
+}
 
  @media (max-width: 480px) {
     .navbar {

@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
- background-color: rgba(121, 10, 56, 0.904);
+  background-color: rgb(206, 38, 102)
 }
 
 code {
@@ -27,5 +27,7 @@ h2 {
   font-family: 'Roboto', sans-serif;
   color: #ffffff; 
   margin: 10px;
-  padding-left: 18px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 19px;
 }

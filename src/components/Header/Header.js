@@ -5,9 +5,7 @@ import "./Header.css";
 const Header = () => {
   return (
     <nav className="navbar">
-      <ul>
-        <li><img className="logo" src="./img/Logometflix.png" alt="Logo" /> </li>
-      </ul>
+      <img className="logo" src="./img/Logometflix.png" alt="Logo" />
       <ul>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/favoritos">Favoritos</Link></li>

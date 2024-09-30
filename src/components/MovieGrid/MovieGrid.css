@@ -53,9 +53,8 @@
 .ver-todas {
   margin: 0 15px;
   margin-bottom: 40px;
-  padding: 5px 25px;
-  background: linear-gradient(rgb(250, 170, 170), rgb(255, 142, 167), rgb(255, 115, 157));
-  border: 3px solid #eb5184;
+  padding: 8px 30px;
+  background: linear-gradient(135deg, #f7c1d1, #f5f0b5); 
   border-radius: 9px; 
 }
 
@@ -67,7 +66,6 @@
   rgb(253, 202, 98), 
   rgb(255, 255, 153) 
   );
-  font-weight: bold; 
 }
 
 .card-container input {
@@ -119,7 +117,6 @@
     rgb(253, 202, 98), 
     rgb(255, 255, 153) 
     );
-    font-weight: bold; 
   }
   
 

@@ -1,8 +1,8 @@
 .footer {
-    background-color: #ffa7c5; 
+    background: linear-gradient(135deg, #f0ff6b, #f7c1d1);
     padding: 20px 0;
     text-align: center;
-    border: 3px solid #d43268; 
+    border: 3px solid #ac2652;
     border-radius: 20px;
 }
 
