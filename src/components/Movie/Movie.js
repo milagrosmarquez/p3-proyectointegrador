@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import "./Pelicula.css"
+import { Component } from 'react';
+import "./Movie.css"
 import { Link } from 'react-router-dom';
 
-class Pelicula extends Component {
+class Movie extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showDescription: false,
-      esFavorito: false,
+      isFavorite: false,
     };
   }
 
@@ -15,46 +15,46 @@ class Pelicula extends Component {
     const storage = localStorage.getItem("favoritos");
     if (storage !== null) {
       const parsedArray = JSON.parse(storage);
-      const estaEnFavoritos = parsedArray.includes(this.props.pelicula.id);
+      const isInFavorites = parsedArray.includes(this.props.movie.id);
       this.setState({
-        esFavorito: estaEnFavoritos
+        isFavorite: isInFavorites
       });
     }
   }
 
-  manejarFavoritos = () => {
-    if (this.state.esFavorito) {
-      this.sacarFavorito();
+  handleFavorites = () => {
+    if (this.state.isFavorite) {
+      this.removeFavorite();
     } else {
-      this.agregarFavorito();
+      this.addFavorite();
     }
   };
 
-  agregarFavorito = () => {
+  addFavorite = () => {
     const storage = localStorage.getItem("favoritos");
     if (storage !== null) {
       const parsedArray = JSON.parse(storage);
-      parsedArray.push(this.props.pelicula.id);
+      parsedArray.push(this.props.movie.id);
       const stringArray = JSON.stringify(parsedArray);
       localStorage.setItem("favoritos", stringArray);
     } else {
-      const primerMovie = [this.props.pelicula.id];
-      const stringArray = JSON.stringify(primerMovie);
+      const firstMovie = [this.props.movie.id];
+      const stringArray = JSON.stringify(firstMovie);
       localStorage.setItem("favoritos", stringArray);
     }
     this.setState({
-      esFavorito: true
+      isFavorite: true
     });
   };
 
-  sacarFavorito = () => {
+  removeFavorite = () => {
     const storage = localStorage.getItem("favoritos");
     const parsedArray = JSON.parse(storage);
-    const favoritosRestantes = parsedArray.filter(id => id !== this.props.pelicula.id);
-    const stringArray = JSON.stringify(favoritosRestantes);
+    const remainingFavorites = parsedArray.filter(id => id !== this.props.movie.id);
+    const stringArray = JSON.stringify(remainingFavorites);
     localStorage.setItem("favoritos", stringArray);
     this.setState({
-      esFavorito: false
+      isFavorite: false
     });
   };
 
@@ -65,20 +65,20 @@ class Pelicula extends Component {
   };
 
   render() {
-    const { pelicula } = this.props;
-    const { showDescription, esFavorito } = this.state;
+    const { movie } = this.props;
+    const { showDescription, isFavorite } = this.state;
 
     return (
       <div className="pelicula">
         <ul>
-          <li key={pelicula.id}>
-            <h3>{pelicula.title}</h3>
+          <li key={movie.id}>
+            <h3>{movie.title}</h3>
             <img
-              src={`https://image.tmdb.org/t/p/w500/${pelicula.poster_path}`}
-              alt={pelicula.title}
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt={movie.title}
             />
-            <p>{pelicula.release_date}</p>
-            {showDescription && <p>{pelicula.overview}</p>}
+            <p>{movie.release_date}</p>
+            {showDescription && <p>{movie.overview}</p>}
 
             <ul>
               <li>
@@ -87,12 +87,12 @@ class Pelicula extends Component {
                 </button>
               </li>
               <li>
-                <button onClick={this.manejarFavoritos}>
-                  {esFavorito ? '❤️' : '🤍'}
+                <button onClick={this.handleFavorites}>
+                  {isFavorite ? '❤️' : '🤍'}
                 </button>
               </li>
               <li>
-                <Link to={`/detalle/${pelicula.id}`}>
+                <Link to={`/detalle/${movie.id}`}>
                   <button>Detalle</button>
                 </Link>
               </li>
@@ -100,9 +100,10 @@ class Pelicula extends Component {
 
           </li>
         </ul>
+        
       </div>
     );
   }
 }
 
-export default Pelicula;
+export default Movie;

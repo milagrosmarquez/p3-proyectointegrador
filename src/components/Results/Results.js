@@ -1,14 +1,14 @@
 import { Component } from "react";
-import Pelicula from "../Pelicula/Pelicula"
+import Movie from "../Movie/Movie";
 import Loader from "../Loader/Loader";
-import "./Resultados.css"
+import "./Results.css"
 
-class Resultados extends Component {
+class Results extends Component {
   constructor(props) {
     super(props);
     this.state = {
       movies: [],
-      Cargando: true,
+      loading: true,
       error: null,
     };
   }
@@ -23,22 +23,22 @@ class Resultados extends Component {
       .then((data) => {
         this.setState({
           movies: data.results,
-          Cargando: false,
+          loading: false,
         });
       })
       .catch((error) => {
         this.setState({
           error,
-          Cargando: false,
+          loading: false,
         });
       });
   }
 
   render() {
-    const { movies, Cargando, error } = this.state;
+    const { movies, loading, error } = this.state;
 
-    if (Cargando) {
-      return <Loader />; 
+    if (loading) {
+      return <Loader />;
     }
 
     if (error) {
@@ -50,10 +50,10 @@ class Resultados extends Component {
         <section className="card-container">
           {movies.length > 0 ? (
             movies.map((movie) => (
-              <Pelicula key={movie.id} pelicula={movie} />
+              <Movie key={movie.id} movie={movie} />
             ))
           ) : (
-            <p>No se encuentran resultados</p> 
+            <p>No se encuentran resultados</p>
           )}
         </section>
       </div>
@@ -61,4 +61,4 @@ class Resultados extends Component {
   }
 }
 
-export default Resultados;
+export default Results;

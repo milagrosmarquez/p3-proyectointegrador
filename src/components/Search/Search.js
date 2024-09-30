@@ -1,10 +1,8 @@
 import { Component } from "react";
-import "./Busqueda.css"
 import { Link } from 'react-router-dom';
+import "./Search.css"
 
-
-class Busqueda extends Component {
-
+class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,27 +10,27 @@ class Busqueda extends Component {
         };
     }
 
-    evitarSubmit(evento) {
-        evento.preventDefault();
+    preventSubmit(event) {
+        event.preventDefault();
     }
 
-    controlarCambios(evento) {
-        this.setState({ query: evento.target.value });
+    handleChange(event) {
+        this.setState({ query: event.target.value });
     }
 
     render() {
         return (
             <div className="busqueda">
-                <form onSubmit={(evento) => this.evitarSubmit(evento)}>
+                <form onSubmit={(event) => this.preventSubmit(event)}>
                     <input
                         type="text"
                         name="query"
                         placeholder="Buscar Película <3"
-                        onChange={(evento) => this.controlarCambios(evento)}
+                        onChange={(event) => this.handleChange(event)}
                         value={this.state.query}
                     />
-                     <Link to={`/Resultados/${this.state.query}`}>
-                    <button type="button">🔎</button>
+                    <Link to={`/Resultados/${this.state.query}`}>
+                        <button type="button">🔎</button>
                     </Link>
                 </form>
             </div>
@@ -40,4 +38,4 @@ class Busqueda extends Component {
     }
 }
 
-export default Busqueda;
+export default Search;

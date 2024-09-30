@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import DetallePelicula from "../components/DetallePelicula/DetallePelicula";
+import MovieDetail from '../components/MovieDetail/MovieDetail';
 
 class Detalle extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class Detalle extends Component {
 
     return (
       <>
-        <DetallePelicula id={id} />
+        <MovieDetail id={id} />
       </>
     );
   }

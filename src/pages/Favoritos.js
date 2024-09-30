@@ -56,7 +56,8 @@ class Favoritos extends Component {
                 ) : (
                     <MovieGrid
                         movies={this.state.movies}
-                        verTodas={false}
+                        showAll={false} 
+                        filtered={false}
                     />
                 )}
             </div>

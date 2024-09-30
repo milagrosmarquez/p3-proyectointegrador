@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import "./MovieGrid.css"
-import Pelicula from "../Pelicula/Pelicula"
+import Movie from "../Movie/Movie"
 import Loader from "../Loader/Loader"
 import { Link } from 'react-router-dom';
 
@@ -9,10 +9,10 @@ class MovieGrid extends Component {
         super(props);
         this.state = {
             movies: [],
-            moviesFiltradas: [],
+            filteredMovies: [],
             filterValue: "",
-            filtroAplicado: false,
-            cargando: true,
+            filterApplied: false,
+            loading: true,
             page: 1
         };
     }
@@ -21,8 +21,8 @@ class MovieGrid extends Component {
         (this.props.movies && this.props.movies.length > 0) ?
             this.setState({
                 movies: this.props.movies,
-                moviesFiltradas: this.props.movies,
-                cargando: false,
+                filteredMovies: this.props.movies,
+                loading: false,
             })
             :
             fetch(`${this.props.url}&page=${this.state.page}`)
@@ -30,114 +30,106 @@ class MovieGrid extends Component {
                 .then((data) => {
                     this.setState({
                         movies: data.results,
-                        moviesFiltradas: data.results,
-                        cargando: false,
+                        filteredMovies: data.results,
+                        loading: false,
                         page: this.state.page + 1
                     });
                 })
                 .catch((error) => console.log(error),
-                    this.setState({ cargando: false }));
+                    this.setState({ loading: false }));
     }
 
-
-    evitarSubmit(evento) {
-        evento.preventDefault();
+    preventSubmit(event) {
+        event.preventDefault();
     }
 
-    handleFilterChange = (evento) => {
-        this.setState({ filterValue: evento.target.value })
+    handleFilterChange = (event) => {
+        this.setState({ filterValue: event.target.value })
     }
 
-    filtro = () => {
+    filter = () => {
         const { filterValue, movies } = this.state;
-        const moviesFiltradas = movies.filter((movie) =>
+        const filteredMovies = movies.filter((movie) =>
             movie.title.toLowerCase().includes(filterValue.toLowerCase())
         );
-        this.setState({ moviesFiltradas, filtroAplicado: true });
+        this.setState({ filteredMovies, filterApplied: true });
     };
 
-    cargarMasPeliculas =() => {
-       fetch(`${this.props.url}&page=${this.state.page}`)
-       .then(response => response.json())
-       .then(data => {
-        this.setState(prevState => ({
-            movies: [...prevState.movies, ...data.results], 
-            moviesFiltradas: [...prevState.moviesFiltradas, ...data.results],  
-            page: prevState.page + 1 
-        }));
-    })
-    .catch(error => console.log(error));
-
+    loadMoreMovies = () => {
+        fetch(`${this.props.url}&page=${this.state.page}`)
+            .then(response => response.json())
+            .then(data => {
+                this.setState(prevState => ({
+                    movies: [...prevState.movies, ...data.results],
+                    filteredMovies: [...prevState.filteredMovies, ...data.results],
+                    page: prevState.page + 1
+                }));
+            })
+            .catch(error => console.log(error));
     }
-       
-
 
     render() {
-        const { movies, cargando, moviesFiltradas, filtroAplicado } = this.state;
-        const { verTodasLink, mostrarTodas, filtrado, cargarMas } = this.props;
+        const { movies, loading, filteredMovies, filterApplied } = this.state;
+        const { showAllLink, showAll, filtered, loadMore } = this.props;
 
         return (
-        
-        <div className="caja">
-            <section className="filtro">
-                {filtrado === true ? (
-                    <form onSubmit={(evento) => this.evitarSubmit(evento)}>
-                        <input
-                            type="text"
-                            name="filterValue"
-                            placeholder="Filtrar películas"
-                            onChange={(evento) => this.handleFilterChange(evento)}
-                            value={this.state.filterValue}
-                        />
-                        <button type="button" onClick={this.filtro}>📽️</button>
-                    </form>
-
-                ) : null}
-            
-            </section>
-            <section className="card-container">
-                {cargando ? (
-                    <Loader />
-                ) : (
-                    filtroAplicado === true && moviesFiltradas.length === 0 ? (
-                        <p>No existen películas para este filtro </p>
+            <div className="caja">
+                <section className="filtro">
+                    {filtered === true ? (
+                        <form onSubmit={(event) => this.preventSubmit(event)}>
+                            <input
+                                type="text"
+                                name="filterValue"
+                                placeholder="Filter movies"
+                                onChange={(event) => this.handleFilterChange(event)}
+                                value={this.state.filterValue}
+                            />
+                            <button type="button" onClick={this.filter}>🎬</button>
+                        </form>
+                    ) : null}
+                </section>
+                <section className="card-container">
+                    {loading ? (
+                        <Loader />
                     ) : (
-                        filtroAplicado === true ? (
-                            moviesFiltradas.map((movie, idx) =>
-                                mostrarTodas ? (
-                                    <Pelicula key={movie.id} pelicula={movie} />
-                                ) : idx < 5 ? (
-                                    <Pelicula key={movie.id} pelicula={movie} />
-                                ) : null
-                            )
+                        filterApplied === true && filteredMovies.length === 0 ? (
+                            <p>No existen películas para este filtro</p>
                         ) : (
-                            movies.length === 0 ? (
-                                <Loader />
-                            ) : (
-                                movies.map((movie, idx) =>
-                                    mostrarTodas ? (
-                                        <Pelicula key={movie.id} pelicula={movie} />
+                            filterApplied === true ? (
+                                filteredMovies.map((movie, idx) =>
+                                    showAll ? (
+                                        <Movie key={movie.id} movie={movie} />
                                     ) : idx < 5 ? (
-                                        <Pelicula key={movie.id} pelicula={movie} />
+                                        <Movie key={movie.id} movie={movie} />
                                     ) : null
+                                )
+                            ) : (
+                                movies.length === 0 ? (
+                                    <Loader />
+                                ) : (
+                                    movies.map((movie, idx) =>
+                                        showAll ? (
+                                            <Movie key={movie.id} movie={movie} />
+                                        ) : idx < 5 ? (
+                                            <Movie key={movie.id} movie={movie} />
+                                        ) : null
+                                    )
                                 )
                             )
                         )
-                    )
-                )}
+                    )}
 
-                {mostrarTodas === false ? (
-                    <Link to={verTodasLink}>
-                        <button className="ver-todas">Ver todas</button>
-                    </Link>
-                ) : null}
+                    {showAll === false && showAllLink ? (
+                        <Link to={showAllLink}>
+                            <button className="ver-todas">Ver todas</button>
+                        </Link>
+                    ) : null}
 
-                {cargarMas === true && filtroAplicado === false ?(
-                      <button className="ver-todas" onClick={this.cargarMasPeliculas}>Cargar más</button>
-                ): null}
+                    {loadMore === true && filterApplied === false ? (
+                        <button className="ver-todas" onClick={this.loadMoreMovies}>Cargar más</button>
+                    ) : null}
+                </section>
                 
-
-            </section>
             </div>
         );
     }

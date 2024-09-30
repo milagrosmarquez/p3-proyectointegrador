@@ -1,5 +1,5 @@
 import { Component } from "react";
-import Resultados from "../components/Resultados/Resultados";
+import Results from "../components/Results/Results";
 
 class SearchResults extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class SearchResults extends Component {
     return (
       <div>
         <h2>Resultados de búsqueda</h2>  
-        <Resultados query={query} />
+        <Results query={query} />
       </div>
     );
   }
