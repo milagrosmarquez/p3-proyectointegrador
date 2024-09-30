@@ -27,7 +27,7 @@ class Busqueda extends Component {
                     <input
                         type="text"
                         name="query"
-                        placeholder="Buscar Película <3 😎"
+                        placeholder="Buscar Película <3"
                         onChange={(evento) => this.controlarCambios(evento)}
                         value={this.state.query}
                     />
