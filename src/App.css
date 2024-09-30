@@ -33,6 +33,10 @@
   }
 }
 
+p{
+  color: aliceblue;
+  margin-left: 15px;
+}
 
 img {
   max-width: 150px; 
