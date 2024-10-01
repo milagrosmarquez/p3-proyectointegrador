@@ -2,10 +2,7 @@ import { Component } from "react";
 import Results from "../components/Results/Results";
 
 class SearchResults extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+  
   render() {
   
     const query = this.props.match.params.query;

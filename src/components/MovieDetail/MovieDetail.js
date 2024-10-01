@@ -24,7 +24,7 @@ class MovieDetail extends Component {
           movie: data,
         });
 
-        const storage = localStorage.getItem("favorites");
+        const storage = localStorage.getItem("favoritos");
         if (storage !== null) {
           const parsedArray = JSON.parse(storage);
           const isInFavorites = parsedArray.includes(data.id);
@@ -50,16 +50,16 @@ class MovieDetail extends Component {
   };
 
   addFavorite = () => {
-    const storage = localStorage.getItem("favorites");
+    const storage = localStorage.getItem("favoritos");
     if (storage !== null) {
       const parsedArray = JSON.parse(storage);
       parsedArray.push(this.state.movie.id);
       const stringArray = JSON.stringify(parsedArray);
-      localStorage.setItem("favorites", stringArray);
+      localStorage.setItem("favoritos", stringArray);
     } else {
       const firstMovie = [this.state.movie.id];
       const stringArray = JSON.stringify(firstMovie);
-      localStorage.setItem("favorites", stringArray);
+      localStorage.setItem("favoritos", stringArray);
     }
     this.setState({
       isFavorite: true
@@ -67,11 +67,11 @@ class MovieDetail extends Component {
   };
 
   removeFavorite = () => {
-    const storage = localStorage.getItem("favorites");
+    const storage = localStorage.getItem("favoritos");
     const parsedArray = JSON.parse(storage);
     const remainingFavorites = parsedArray.filter(id => id !== this.state.movie.id);
     const stringArray = JSON.stringify(remainingFavorites);
-    localStorage.setItem("favorites", stringArray);
+    localStorage.setItem("favoritos", stringArray);
     this.setState({
       isFavorite: false
     });
