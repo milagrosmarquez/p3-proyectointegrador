@@ -4,6 +4,7 @@ import MovieDetail from '../components/MovieDetail/MovieDetail';
 class Detalle extends Component {
 
   render() {
+    
     const { id } = this.props.match.params;
 
     return (
