@@ -9,12 +9,14 @@ class Favoritos extends Component {
         this.state = {
             movies: [],
             isLoading: true,
+            error: false,
         };
     }
 
     componentDidMount() {
         this.setState({
             isLoading: true,
+            error: false,
         });
 
         const storage = localStorage.getItem("favoritos");
@@ -23,7 +25,7 @@ class Favoritos extends Component {
 
             Promise.all(
                 parsedArray.map((id) => {
-                    return fetch( `https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=ac8eace47b1cb77be341847000943da0`)
+                    return fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=ac8eace47b1cb77be341847000943da0`)
                         .then((response) => response.json())
                         .then((movie) => {
                             this.setState((prevState) => ({
@@ -31,11 +33,17 @@ class Favoritos extends Component {
                             }));
                         });
                 })
-            ).then(() => {
-                this.setState({
-                    isLoading: false,
+            )
+                .then(() => {
+                    this.setState({
+                        isLoading: false,
+                    });
+                })
+                .catch(() => {
+                    this.setState({
+                        error: true,
+                    });
                 });
-            });
         } else {
             this.setState({
                 isLoading: false,
@@ -44,23 +52,25 @@ class Favoritos extends Component {
     }
 
     render() {
-
+        const { isLoading, error, movies } = this.state;
         return (
             <>
                 <h1>Mis favoritos 💗</h1>
                 <div>
-                {this.state.isLoading ? (
-                    <Loader />
-                ) : this.state.movies.length === 0 ? (
-                    <p>No tienes películas favoritas</p>
-                ) : (
-                    <MovieGrid
-                        movies={this.state.movies}
-                        showAll={false} 
-                        filtered={false}
-                    />
-                )}
-            </div>
+                    {isLoading ? (
+                        <Loader />
+                    ) : error ? (
+                        <p>Error al cargar las películas </p>
+                    ) : movies.length === 0 ? (
+                        <p>No tienes películas favoritas</p>
+                    ) : (
+                        <MovieGrid
+                            movies={this.state.movies}
+                            showAll={false}
+                            filtered={false}
+                        />
+                    )}
+                </div>
             </>
         );
     }
