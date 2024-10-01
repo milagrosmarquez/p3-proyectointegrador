@@ -13,7 +13,8 @@ class MovieGrid extends Component {
             filterValue: "",
             filterApplied: false,
             loading: true,
-            page: 1
+            page: 1,
+            error: false
         };
     }
 
@@ -32,11 +33,13 @@ class MovieGrid extends Component {
                         movies: data.results,
                         filteredMovies: data.results,
                         loading: false,
-                        page: this.state.page + 1
+                        page: this.state.page + 1,
+                        error: false
                     });
                 })
-                .catch((error) => console.log(error),
-                    this.setState({ loading: false }));
+                .catch(() => {
+                    this.setState({ loading: false, error: true });
+                });
     }
 
     preventSubmit(event) {
@@ -65,11 +68,13 @@ class MovieGrid extends Component {
                     page: prevState.page + 1
                 }));
             })
-            .catch(error => console.log(error));
+            .catch(() => {
+                this.setState({ error: true });
+            });
     }
 
     render() {
-        const { movies, loading, filteredMovies, filterApplied } = this.state;
+        const { movies, loading, filteredMovies, filterApplied, error } = this.state;
         const { showAllLink, showAll, filtered, loadMore } = this.props;
 
         return (
@@ -91,6 +96,8 @@ class MovieGrid extends Component {
                 <section className="card-container">
                     {loading ? (
                         <Loader />
+                    ) : error ? (
+                        <p>Error al cargar películas</p>
                     ) : (
                         filterApplied === true && filteredMovies.length === 0 ? (
                             <p>No existen películas para este filtro</p>
@@ -129,7 +136,7 @@ class MovieGrid extends Component {
                         <button className="ver-todas" onClick={this.loadMoreMovies}>Cargar más</button>
                     ) : null}
                 </section>
-                
+
             </div>
         );
     }
